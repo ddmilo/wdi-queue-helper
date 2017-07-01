@@ -4,11 +4,10 @@ var Schema = mongoose.Schema;
 mongoose.Promise = global.Promise;
 
 //USER
-var UserSchema = {
+var StudentSchema = {
 	first_name: { type: String, required: true, unique: true},
     last_name: { type: String, required: true, uniqe: true},
-    cohort: { type: String, required: true, unique: true},
-    is_instructor: { type: Boolean}
+    cohort: { type: String, required: true}
 };
 
 
@@ -16,10 +15,10 @@ var UserSchema = {
 
 
 //MAKE MODELS
-var UserModel = mongoose.model('User', UserSchema);
+var StudentModel = mongoose.model('Student', StudentSchema);
 
 //EXPORT MODELS
 module.exports = {
-	User: UserModel,
+	Student: StudentModel
 
 };

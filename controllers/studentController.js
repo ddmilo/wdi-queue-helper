@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
-var User = require('../models/user.model.js');
+var bodyParser = require('body-parser');
+var Student = require('../models/student.model.js');
 
 //Student INDEX
 
 router.get('/', function indexAction(req, res) {
-  User.find(function(error, user) {
+  Student.find(function(error, student) {
     if(error) res.json({message: 'Could not find any students'});
 
-    res.json({user: user});
+    res.json({student: student});
   }).select('-__v');
 });
 

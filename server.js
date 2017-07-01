@@ -22,7 +22,7 @@ app.use(express.static('public'));
 var studentController = require('./controllers/studentController.js');
 
 //USE CONTROLLERS
-app.use('/', studentController);
+app.use('/api/students', studentController);
 
 
 //PORT STUFF

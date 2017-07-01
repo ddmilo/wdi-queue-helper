@@ -10,6 +10,6 @@ function HomeService($http){
     self.loadAll = loadAll;
 
     function loadAll(){
-        return $http.get('/home');
+        return $http.get('/');
     }
 }    

@@ -15,7 +15,7 @@ function HomeController() {
 		HomeService
 			.loadAll()
 			.then(function resolve(response){
-				vm.beer = response.data.users;
+				vm.beer = response.data.user;
 			});
 	}
 };
