@@ -17,14 +17,18 @@ db.once('open', function() {
 
 app.use(express.static('public'));
 
-app.get('/', function(req, res){
-    res.render('index');
-});
 
+//REQ CONTROLLERS
+var studentController = require('./controllers/studentController.js');
+
+//USE CONTROLLERS
+app.use('/', studentController);
+
+
+//PORT STUFF
 app.listen(3000, function(){
     console.log("app listening on port 3000");
 });
 
 module.exports = app;
 
-//testing ssh
