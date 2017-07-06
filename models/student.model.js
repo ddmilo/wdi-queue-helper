@@ -1,6 +1,6 @@
 var Schema = require('../db/schema.js');
 var mongoose = require('mongoose');
 
-var User = Schema.User;
+var Student = Schema.Student;
 
-module.exports = User;
+module.exports = Student;
