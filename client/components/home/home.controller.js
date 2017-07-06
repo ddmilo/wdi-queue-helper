@@ -1,11 +1,23 @@
-const controller = require('./home.controller.js');
-const template = require('./home.html');
+HomeController.$inject = ['HomeService'];
 
-const component = {
-	controller: controller,
-	template: template
+function HomeController() {
+	const vm = this;
+
+	vm.student = []
+
+	activate();
+	
+	function activate(){
+		loadAllStudents();
+	}
+
+	function loadAllStudents(){
+		HomeService
+			.loadAll()
+			.then(function resolve(response){
+				vm.beer = response.data.user;
+			});
+	}
 };
 
-angular
-	.module('wdi-queue-helper')
-	.component('home', component);
+module.exports = HomeController;

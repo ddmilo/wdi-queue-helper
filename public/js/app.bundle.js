@@ -63,29 +63,41 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 7);
+/******/ 	return __webpack_require__(__webpack_require__.s = 8);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-const controller = __webpack_require__(0);
-const template = __webpack_require__(6);
+HomeController.$inject = ['HomeService'];
 
-const component = {
-	controller: controller,
-	template: template
+function HomeController() {
+	const vm = this;
+
+	vm.student = [];
+
+	activate();
+
+	function activate() {
+		loadAllStudents();
+	}
+
+	function loadAllStudents() {
+		HomeService.loadAll().then(function resolve(response) {
+			vm.beer = response.data.users;
+		});
+	}
 };
 
-angular.module('wdi-queue-helper').component('home', component);
+module.exports = HomeController;
 
 /***/ }),
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const angular = __webpack_require__(5);
-__webpack_require__(3);
+const angular = __webpack_require__(6);
+__webpack_require__(4);
 
 angular.module('wdi-queue-helper', ['ui.router']).config(uiRouterSetup);
 
@@ -103,18 +115,38 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-HomeController.$inject = [];
+const controller = __webpack_require__(0);
+const template = __webpack_require__(7);
 
-function HomeController() {
-	const vm = this;
+const component = {
+	controller: controller,
+	template: template
 };
 
-module.exports = HomeController;
+angular.module('wdi-queue-helper').component('home', component);
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports) {
+
+angular.module('wdi-queue-helper').service('HomeService', HomeService);
+
+HomeService.$inject = ['$http'];
+
+function HomeService($http) {
+    const self = this;
+
+    self.loadAll = loadAll;
+
+    function loadAll() {
+        return $http.get('/');
+    }
+}
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports) {
 
 /**
@@ -4803,7 +4835,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /**
@@ -38180,26 +38212,27 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(4);
+__webpack_require__(5);
 module.exports = angular;
 
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>THIS IS THE HOME PAGE WEW LAD</h1>";
+module.exports = "<h1>THIS IS THE HOME PAGE WEW LAD adsadasd</h1>\n\n<ul>\n    <li ng-repeat = 'user in $ctrl.home'>\n        {{user.name}}\n    </li>\n</ul>";
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
 __webpack_require__(2);
-module.exports = __webpack_require__(0);
+__webpack_require__(0);
+module.exports = __webpack_require__(3);
 
 
 /***/ })

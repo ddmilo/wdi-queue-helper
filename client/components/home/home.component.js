@@ -1,7 +1,11 @@
-HomeController.$inject = [];
+const controller = require('./home.controller.js');
+const template = require('./home.html');
 
-function HomeController() {
-	const vm = this;
+const component = {
+	controller: controller,
+	template: template
 };
 
-module.exports = HomeController;
+angular
+	.module('wdi-queue-helper')
+	.component('home', component);
