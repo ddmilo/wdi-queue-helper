@@ -27,4 +27,4 @@ A mini Angular app used to add student names to a queue during project times.
 
 
 ## Wireframe
- ![Wireframe](images/qbox.png)
+ ![Wireframe](public/images/qbox.png)
