@@ -1,7 +1,9 @@
-<h1>THIS IS THE HOME PAGE WEW LAD adsadasd</h1>
+<h1>THIS IS THE HOME PAGE WEW LAD </h1>
 
-<ul>
-    <li ng-repeat = 'user in $ctrl.user'>
-        {{user.name}}
+<ol>
+    <li ng-repeat='student in $ctrl.students'>
+        {{student.first_name}}
+        {{student.last_name}}
+        {{student.cohort}}
     </li>
-</ul>
+</ol>

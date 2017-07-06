@@ -9,7 +9,7 @@ function HomeService($http){
 
     self.loadAll = loadAll;
 
-    function loadAll(){
-        return $http.get('/');
+    function loadAll(students){
+        return $http.get('/api/students');
     }
 }    

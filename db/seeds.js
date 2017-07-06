@@ -17,8 +17,6 @@ var dan = new Student({
   last_name: 'Milo',
   cohort: 'WDI-9',
   
-
-
 });
 
 var ryan = new Student({
@@ -26,8 +24,6 @@ var ryan = new Student({
   last_name: 'Wilkinson',
   cohort: 'WDI-9',
   
-
-
 });
 
 var randy = new Student({
@@ -35,8 +31,6 @@ var randy = new Student({
   last_name: 'Galeano',
   cohort: 'WDI-9',
   
-
-
 });
 
 var hassan = new Student({
@@ -44,8 +38,6 @@ var hassan = new Student({
   last_name: 'Masroor',
   cohort: 'WDI-9',
   
-
-
 });
 
 
