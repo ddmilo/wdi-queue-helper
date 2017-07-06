@@ -70,12 +70,12 @@
 /* 0 */
 /***/ (function(module, exports) {
 
-HomeController.$inject = ['HomeService'];
+HomeController.$inject = ['HomeService', '$stateParams'];
 
-function HomeController() {
+function HomeController(HomeService, $stateParams) {
 	const vm = this;
 
-	vm.student = [];
+	vm.students = [];
 
 	activate();
 
@@ -85,10 +85,12 @@ function HomeController() {
 
 	function loadAllStudents() {
 		HomeService.loadAll().then(function resolve(response) {
-			vm.beer = response.data.users;
+			console.log(response.data);
+			vm.students = response.data.students;
+			console.log(vm.students);
 		});
 	}
-};
+}
 
 module.exports = HomeController;
 
@@ -140,8 +142,8 @@ function HomeService($http) {
 
     self.loadAll = loadAll;
 
-    function loadAll() {
-        return $http.get('/');
+    function loadAll(students) {
+        return $http.get('/api/students');
     }
 }
 
@@ -38223,7 +38225,7 @@ module.exports = angular;
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>THIS IS THE HOME PAGE WEW LAD adsadasd</h1>\n\n<ul>\n    <li ng-repeat = 'user in $ctrl.home'>\n        {{user.name}}\n    </li>\n</ul>";
+module.exports = "<h1>THIS IS THE HOME PAGE WEW LAD </h1>\n\n<ol>\n    <li ng-repeat='student in $ctrl.students'>\n        {{student.first_name}}\n        {{student.last_name}}\n        {{student.cohort}}\n    </li>\n</ol>\n";
 
 /***/ }),
 /* 8 */

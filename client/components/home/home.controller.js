@@ -1,12 +1,12 @@
-HomeController.$inject = ['HomeService'];
+HomeController.$inject = ['HomeService', '$stateParams'];
 
-function HomeController() {
+function HomeController(HomeService, $stateParams) {
 	const vm = this;
 
-	vm.student = []
+	vm.students = [];
 
 	activate();
-	
+
 	function activate(){
 		loadAllStudents();
 	}
@@ -15,9 +15,11 @@ function HomeController() {
 		HomeService
 			.loadAll()
 			.then(function resolve(response){
-				vm.beer = response.data.user;
+				console.log(response.data);
+				vm.students = response.data.students;
+				console.log(vm.students);
 			});
 	}
-};
+}
 
 module.exports = HomeController;

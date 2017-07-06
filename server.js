@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app     = express();
 
 
@@ -14,7 +15,9 @@ db.once('open', function() {
  console.log("database has been connected!");
 });
 
-
+//USE PACKAGES
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 
