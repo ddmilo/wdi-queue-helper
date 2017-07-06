@@ -27,4 +27,4 @@ A mini Angular app used to add student names to a queue during project times.
 
 
 ## Wireframe
- [![Wireframe] (https://github.com/Ryan-Wilkinson/wdi-queue-helper/blob/master/public/images/qbox.png)]
+ ![Wireframe](images/qbox.png)
