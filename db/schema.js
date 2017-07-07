@@ -7,7 +7,7 @@ mongoose.Promise = global.Promise;
 var StudentSchema = {
 	first_name: { type: String, required: true, unique: true},
     last_name: { type: String, required: true, uniqe: true},
-    cohort: { type: String, required: true}
+    cohort: { type: String, required: false}
 };
 
 

@@ -73,16 +73,19 @@
 "use strict";
 
 
-HomeController.$inject = ['HomeService', '$stateParams'];
+HomeController.$inject = ['HomeService', '$stateParams', '$state'];
 
-function HomeController(HomeService, $stateParams) {
+function HomeController(HomeService, $stateParams, $state) {
 	var vm = this;
 
 	vm.students = [];
+	vm.newStudent = {};
+	vm.addStudent = addStudent;
 
 	activate();
 
 	function activate() {
+		console.log('home state relaoded');
 		loadAllStudents();
 	}
 
@@ -92,6 +95,14 @@ function HomeController(HomeService, $stateParams) {
 			vm.students = response.data.students;
 			console.log(vm.students);
 		});
+	}
+
+	function addStudent() {
+		HomeService.addStudent(vm.newStudent).then(function (req, res, next) {
+			vm.students.push(req.data.student);
+		});
+
+		vm.newStudent = {};
 	}
 }
 
@@ -153,9 +164,14 @@ function HomeService($http) {
     var self = this;
 
     self.loadAll = loadAll;
+    self.addStudent = addStudent;
 
     function loadAll(students) {
         return $http.get('/api/students');
+    }
+
+    function addStudent(student) {
+        return $http.post('/api/students', student);
     }
 }
 
@@ -38237,7 +38253,7 @@ module.exports = angular;
 /* 7 */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>THIS IS THE HOME PAGE WEW LAD </h1>\n\n<ol>\n    <li ng-repeat='student in $ctrl.students'>\n        {{student.first_name}}\n        {{student.last_name}}\n        {{student.cohort}}\n    </li>\n</ol>\n";
+module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
 
 /***/ }),
 /* 8 */

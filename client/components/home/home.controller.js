@@ -1,13 +1,16 @@
-HomeController.$inject = ['HomeService', '$stateParams'];
+HomeController.$inject = ['HomeService', '$stateParams', '$state'];
 
-function HomeController(HomeService, $stateParams) {
+function HomeController(HomeService, $stateParams, $state) {
 	const vm = this;
 
 	vm.students = [];
+	vm.newStudent = {};
+	vm.addStudent = addStudent;
 
 	activate();
 
 	function activate(){
+		console.log('home state relaoded');
 		loadAllStudents();
 	}
 
@@ -19,6 +22,16 @@ function HomeController(HomeService, $stateParams) {
 				vm.students = response.data.students;
 				console.log(vm.students);
 			});
+	}
+
+	function addStudent(){
+		HomeService
+			.addStudent(vm.newStudent)
+			.then(function(req, res, next) {
+				vm.students.push(req.data.student);
+			});
+		
+		vm.newStudent = {};
 	}
 }
 
