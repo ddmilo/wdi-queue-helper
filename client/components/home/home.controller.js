@@ -6,6 +6,7 @@ function HomeController(HomeService, $stateParams, $state) {
 	vm.students = [];
 	vm.newStudent = {};
 	vm.addStudent = addStudent;
+	vm.deleteStudent = deleteStudent;
 
 	activate();
 
@@ -32,6 +33,11 @@ function HomeController(HomeService, $stateParams, $state) {
 			});
 		
 		vm.newStudent = {};
+	}
+
+	function deleteStudent(){
+		HomeService
+			
 	}
 }
 
