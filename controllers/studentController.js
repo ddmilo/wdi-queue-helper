@@ -22,4 +22,15 @@ router.post('/', function createAction(req, res){
     });
 })
 
+//Student Delete
+
+router.delete("/delete/:studentId", function(req, res) {
+  console.log('delete route');
+  Student.findByIdAndRemove(req.params.studentId)
+    .exec(function (err, student) {
+      console.log(student);
+      res.json({student: student});
+    });
+});
+
 module.exports = router;
