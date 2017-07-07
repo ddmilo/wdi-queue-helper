@@ -1,9 +1,28 @@
-<h1>THIS IS THE HOME PAGE WEW LAD </h1>
 
-<ol>
-    <li ng-repeat='student in $ctrl.students'>
-        {{student.first_name}}
-        {{student.last_name}}
-        {{student.cohort}}
-    </li>
-</ol>
+<div>
+   <ol>
+      <li ng-repeat='student in $ctrl.students'>
+          {{student.first_name}}
+          {{student.last_name}}
+      </li>
+  </ol>
+</div>
+
+<main class= "newStudentForm">
+    <h1>Create</h1>
+    <link href="https://fonts.googleapis.com/css?family=Alice" rel="stylesheet">
+    <br>
+    <div class="newStudent">
+        <form ng-submit = "$ctrl.addStudent(newStudent)">
+            <div>
+                <label>Name</label>
+                <br>
+                <input type = "text" name= "name" ng-model= "$ctrl.newStudent.first_name" >
+                <br>
+                <input type = "text" name= "name" ng-model= "$ctrl.newStudent.last_name" >
+
+                <input type="submit" name="create account">
+            </div>
+        </form>
+    </div>
+</main>
