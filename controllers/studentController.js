@@ -13,13 +13,13 @@ router.get('/', function indexAction(req, res) {
   }).select('-__v');
 });
 
-// router.get('/', (req, res) => {
-//   Student
-//     .find({})
-//     .exec((err, students) => {
-//       if(err) console.log(err);
-//       res.json({students: students});
-//     })
-// });
+// STUDENT CREATE
+
+router.post('/', function createAction(req, res){
+  var student = new Student(req.body);
+  student.save(function(error){
+      res.json({student: student})
+    });
+})
 
 module.exports = router;
