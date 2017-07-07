@@ -68,12 +68,15 @@
 /************************************************************************/
 /******/ ([
 /* 0 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 HomeController.$inject = ['HomeService', '$stateParams'];
 
 function HomeController(HomeService, $stateParams) {
-	const vm = this;
+	var vm = this;
 
 	vm.students = [];
 
@@ -98,7 +101,10 @@ module.exports = HomeController;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const angular = __webpack_require__(6);
+"use strict";
+
+
+var angular = __webpack_require__(6);
 __webpack_require__(4);
 
 angular.module('wdi-queue-helper', ['ui.router']).config(uiRouterSetup);
@@ -119,10 +125,13 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
-const controller = __webpack_require__(0);
-const template = __webpack_require__(7);
+"use strict";
 
-const component = {
+
+var controller = __webpack_require__(0);
+var template = __webpack_require__(7);
+
+var component = {
 	controller: controller,
 	template: template
 };
@@ -131,14 +140,17 @@ angular.module('wdi-queue-helper').component('home', component);
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 angular.module('wdi-queue-helper').service('HomeService', HomeService);
 
 HomeService.$inject = ['$http'];
 
 function HomeService($http) {
-    const self = this;
+    var self = this;
 
     self.loadAll = loadAll;
 
