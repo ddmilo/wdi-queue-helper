@@ -9,7 +9,7 @@ function HomeService($http){
 
     self.loadAll = loadAll;
     self.addStudent = addStudent;
-    self.deleteStudent = deleteStudent;
+    self.removeStudent = removeStudent;
 
     function loadAll(students){
         return $http.get('/api/students');
@@ -19,7 +19,7 @@ function HomeService($http){
         return $http.post('/api/students', student);
     }
 
-    function deleteStudent(student) {
-        return $http.delete('api/students/delete' + student.id);
-  }
-}    
+    function removeStudent(student){
+      return $http.delete('/api/students', student);
+    }
+}

@@ -31,7 +31,7 @@ function HomeController(HomeService, $stateParams, $state) {
 			.then(function(req, res, next) {
 				vm.students.push(req.data.student);
 			});
-		
+
 		vm.newStudent = {};
 	}
 

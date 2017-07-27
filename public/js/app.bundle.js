@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -121,14 +121,17 @@ module.exports = HomeController;
 "use strict";
 
 
-var angular = __webpack_require__(6);
-__webpack_require__(4);
+var angular = __webpack_require__(7);
+__webpack_require__(5);
 
 angular.module('wdi-queue-helper', ['ui.router']).config(uiRouterSetup);
 
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
-	$stateProvider.state('home', {
+	$stateProvider.state('auth', {
+		url: '/sessions/login',
+		template: '<auth></auth>'
+	}).state('home', {
 		url: '/',
 		template: '<home></home>'
 	}).state('about', {
@@ -145,8 +148,23 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 "use strict";
 
 
+var template = __webpack_require__(8);
+
+var AuthComponent = {
+  template: template
+};
+
+angular.module('wdi-queue-helper').component('auth', AuthComponent);
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
 var controller = __webpack_require__(0);
-var template = __webpack_require__(7);
+var template = __webpack_require__(9);
 
 var component = {
 	controller: controller,
@@ -156,7 +174,7 @@ var component = {
 angular.module('wdi-queue-helper').component('home', component);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -171,7 +189,7 @@ function HomeService($http) {
 
     self.loadAll = loadAll;
     self.addStudent = addStudent;
-    self.deleteStudent = deleteStudent;
+    self.removeStudent = removeStudent;
 
     function loadAll(students) {
         return $http.get('/api/students');
@@ -181,13 +199,13 @@ function HomeService($http) {
         return $http.post('/api/students', student);
     }
 
-    function deleteStudent(student) {
-        return $http.delete('api/students/delete' + student.id);
+    function removeStudent(student) {
+        return $http.delete('/api/students', student);
     }
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /**
@@ -4876,7 +4894,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /**
@@ -38253,27 +38271,34 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
+__webpack_require__(6);
 module.exports = angular;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = "\n<main id=\"authMain\">\n<div class=\"wrapper\">\n  <form action='/api/sessions/login' ng-submit =\"$ctrl.current.user\" class=\"form-signin\" method = 'POST'>\n    <h2 class=\"form-signin-heading\">Please login</h2>\n        <input type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"Email Address\" required=\"\" autofocus=\"\" />\n        <input type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"Password\" required=\"\"/>\n        <button class=\"btn btn-lg btn-warning btn-block\" type=\"submit\">Login</button>\n    </form>\n</div>\n</main>\n\n";
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n          <button ng-click=\"$ctrl.deleteStudent($ctrl.student)\" class=\"btn btn-danger\">Delete Account</button>\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
 __webpack_require__(2);
+__webpack_require__(3);
 __webpack_require__(0);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(4);
 
 
 /***/ })
