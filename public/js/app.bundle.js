@@ -63,7 +63,7 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 8);
+/******/ 	return __webpack_require__(__webpack_require__.s = 10);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -115,8 +115,8 @@ module.exports = HomeController;
 "use strict";
 
 
-var angular = __webpack_require__(6);
-__webpack_require__(4);
+var angular = __webpack_require__(7);
+__webpack_require__(5);
 
 angular.module('wdi-queue-helper', ['ui.router']).config(uiRouterSetup);
 
@@ -134,13 +134,20 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 
 /***/ }),
 /* 2 */
+/***/ (function(module, exports) {
+
+"use strict";
+throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/danmilo/wdi-queue-helper/client/components/auth/auth.component.js'");
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 var controller = __webpack_require__(0);
-var template = __webpack_require__(7);
+var template = __webpack_require__(9);
 
 var component = {
 	controller: controller,
@@ -150,7 +157,7 @@ var component = {
 angular.module('wdi-queue-helper').component('home', component);
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -176,7 +183,7 @@ function HomeService($http) {
 }
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports) {
 
 /**
@@ -4865,7 +4872,7 @@ angular.module('ui.router.state')
 })(window, window.angular);
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports) {
 
 /**
@@ -38242,27 +38249,29 @@ $provide.value("$locale", {
 !window.angular.$$csp().noInlineStyle && window.angular.element(document.head).prepend('<style type="text/css">@charset "UTF-8";[ng\\:cloak],[ng-cloak],[data-ng-cloak],[x-ng-cloak],.ng-cloak,.x-ng-cloak,.ng-hide:not(.ng-hide-animate){display:none !important;}ng\\:form{display:block;}.ng-animate-shim{visibility:hidden;}.ng-anchor{position:absolute;}</style>');
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(5);
+__webpack_require__(6);
 module.exports = angular;
 
 
 /***/ }),
-/* 7 */
+/* 8 */,
+/* 9 */
 /***/ (function(module, exports) {
 
 module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
 __webpack_require__(2);
+__webpack_require__(3);
 __webpack_require__(0);
-module.exports = __webpack_require__(3);
+module.exports = __webpack_require__(4);
 
 
 /***/ })
