@@ -20,10 +20,14 @@ router.post('/', function createAction(req, res){
   student.save(function(error){
       res.json({student: student})
     });
-})
+});
 
 
-router.delete('/', function deleteAction(req, res){
-  
-})
+//DELETE USER
+router.delete("/delete/:userId", function(req, res) {
+  Student.findByIdAndRemove(req.params.studentId)
+    .exec(function (err, student) {
+      res.json({student: student});
+    });
+});
 module.exports = router;

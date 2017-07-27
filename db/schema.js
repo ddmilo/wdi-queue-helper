@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 //USER
 const StudentSchema = {
 	first_name: { type: String, required: true, unique: true},
-    last_name: { type: String, required: true, uniqe: true},
+    last_name: { type: String, required: true, uniqe: true}
 };
 
 const AdminSchema = {
