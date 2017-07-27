@@ -22,4 +22,8 @@ router.post('/', function createAction(req, res){
     });
 })
 
+
+router.delete('/', function deleteAction(req, res){
+  
+})
 module.exports = router;

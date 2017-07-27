@@ -13,7 +13,7 @@ function loginUser(req, res, next) {
   var username = req.body.username;
   var password = req.body.password;
 
-  User.findOne({ username: username })
+  Admin.findOne({ username: username })
   .then(function(foundUser){
     if (foundUser == null) {
       res.json({status: 401, data: "unauthorized"});

@@ -25,6 +25,6 @@ const AdminModel = mongoose.model('Admin', AdminSchema);
 //EXPORT MODELS
 module.exports = {
     Student: StudentModel,
-    Admin: AdminSchema
+    Admin: AdminModel
 
 };
