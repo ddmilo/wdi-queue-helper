@@ -81,6 +81,7 @@ function HomeController(HomeService, $stateParams, $state) {
 	vm.students = [];
 	vm.newStudent = {};
 	vm.addStudent = addStudent;
+	vm.deleteStudent = deleteStudent;
 
 	activate();
 
@@ -104,6 +105,11 @@ function HomeController(HomeService, $stateParams, $state) {
 
 		vm.newStudent = {};
 	}
+
+	function deleteStudent(student) {
+		HomeService.deleteStudent(student);
+		console.log("in the delete controller action");
+	}
 }
 
 module.exports = HomeController;
@@ -122,7 +128,10 @@ angular.module('wdi-queue-helper', ['ui.router']).config(uiRouterSetup);
 
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
-	$stateProvider.state('home', {
+	$stateProvider.state('auth', {
+		url: '/sessions/login',
+		template: '<auth></auth>'
+	}).state('home', {
 		url: '/',
 		template: '<home></home>'
 	}).state('about', {
@@ -172,6 +181,7 @@ function HomeService($http) {
 
     self.loadAll = loadAll;
     self.addStudent = addStudent;
+    self.removeStudent = removeStudent;
 
     function loadAll(students) {
         return $http.get('/api/students');
@@ -179,6 +189,10 @@ function HomeService($http) {
 
     function addStudent(student) {
         return $http.post('/api/students', student);
+    }
+
+    function removeStudent(student) {
+        return $http.delete('/api/students', student);
     }
 }
 
@@ -38261,7 +38275,7 @@ module.exports = angular;
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
+module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n          <button ng-click=\"$ctrl.deleteStudent($ctrl.student)\" class=\"btn btn-danger\">Delete Account</button>\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
 
 /***/ }),
 /* 10 */

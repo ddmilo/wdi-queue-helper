@@ -8,6 +8,10 @@ angular
 uiRouterSetup.$inject = ['$stateProvider', '$urlRouterProvider'];
 function uiRouterSetup($stateProvider, $urlRouterProvider) {
 	$stateProvider
+		.state('auth', {
+			url: '/sessions/login',
+			template: '<auth></auth>'
+		})
 		.state('home', {
 			url: '/',
 			template: '<home></home>'

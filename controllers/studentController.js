@@ -1,7 +1,7 @@
-var express = require('express');
-var bodyParser = require('body-parser');
-var router = express.Router();
-var Student = require('../models/student.model.js');
+const express = require('express');
+const bodyParser = require('body-parser');
+const router = express.Router();
+const Student = require('../models/student.model.js');
 
 //Student INDEX
 
@@ -16,10 +16,22 @@ router.get('/', function indexAction(req, res) {
 // STUDENT CREATE
 
 router.post('/', function createAction(req, res){
-  var student = new Student(req.body);
+  let student = new Student(req.body);
   student.save(function(error){
       res.json({student: student})
     });
-})
+});
+
+
+//Student Delete
+
+router.delete("/delete/:studentId", function(req, res) {
+  console.log('delete route');
+  Student.findByIdAndRemove(req.params.studentId)
+    .exec(function (err, student) {
+      console.log(student);
+      res.json({student: student});
+    });
+});
 
 module.exports = router;
