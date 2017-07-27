@@ -1,24 +1,30 @@
-var mongoose = require('mongoose');
-var Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 mongoose.Promise = global.Promise;
 
 //USER
-var StudentSchema = {
+const StudentSchema = {
 	first_name: { type: String, required: true, unique: true},
     last_name: { type: String, required: true, uniqe: true},
-    cohort: { type: String, required: false}
 };
 
+const AdminSchema = {
+    username: { type: String},
+    password_digest: { type: String, required: true }
+
+}
 
 
 
 
 //MAKE MODELS
-var StudentModel = mongoose.model('Student', StudentSchema);
+const StudentModel = mongoose.model('Student', StudentSchema);
+const AdminModel = mongoose.model('Admin', AdminSchema);
 
 //EXPORT MODELS
 module.exports = {
-	Student: StudentModel
+    Student: StudentModel,
+    Admin: AdminSchema
 
 };
