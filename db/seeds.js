@@ -1,10 +1,10 @@
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/wdi-app');
 
-var Admin = require('../models/admin.model.js');
-var Student = require('../models/student.model.js');
-// var Post = require('../models/post')
+const Admin = require('../models/admin.model.js');
+const Student = require('../models/student.model.js');
+// const Post = require('../models/post')
 mongoose.Promise = global.Promise;
 
 
@@ -19,35 +19,35 @@ Student.remove({}, function(err){
 
 
 
-var dan = new Student({
+const dan = new Student({
   first_name: 'Dan',
   last_name: 'Milo',
   cohort: 'WDI-9',
 
 });
 
-var ryan = new Student({
+const ryan = new Student({
   first_name: 'Ryan',
   last_name: 'Wilkinson',
   cohort: 'WDI-9',
 
 });
 
-var randy = new Student({
+const randy = new Student({
   first_name: 'Randy',
   last_name: 'Galeano',
   cohort: 'WDI-9',
 
 });
 
-var hassan = new Student({
+const hassan = new Student({
   first_name: 'Hassan',
   last_name: 'Masroor',
   cohort: 'WDI-9',
 
 });
 
-var instructor = new Admin({
+const instructor = new Admin({
   username: 'testAdmin',
   password_digest: 'test123'
 });

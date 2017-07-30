@@ -1,12 +1,13 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const app     = express();
-var session = require('express-session');
+const session = require('express-session');
 
 
 //MONGO STUFF
-var mongoose = require('mongoose');
-var db = mongoose.connection;
+const mongoose = require('mongoose');
+const db = mongoose.connection;
 // mongoose.connect(process.env.MONGODB_URI);
 mongoose.connect('mongodb://localhost/wdi-app');
 db.on('error', function(err){
@@ -30,9 +31,9 @@ app.use(express.static('public'));
 
 
 //REQ CONTROLLERS
-var sessionsController = require('./controllers/sessions.js');
-var studentController = require('./controllers/studentController.js');
-var adminController = require('./controllers/adminController.js');
+const sessionsController = require('./controllers/sessions.js');
+const studentController = require('./controllers/studentController.js');
+const adminController = require('./controllers/adminController.js');
 
 //USE CONTROLLERS
 app.use('/api/sessions', sessionsController);
@@ -46,4 +47,3 @@ app.listen(3000, function(){
 });
 
 module.exports = app;
-

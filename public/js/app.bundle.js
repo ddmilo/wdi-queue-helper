@@ -81,7 +81,7 @@ function HomeController(HomeService, $stateParams, $state) {
 	vm.students = [];
 	vm.newStudent = {};
 	vm.addStudent = addStudent;
-	vm.deleteStudent = deleteStudent;
+	vm.removeStudent = removeStudent;
 
 	activate();
 
@@ -92,9 +92,9 @@ function HomeController(HomeService, $stateParams, $state) {
 
 	function loadAllStudents() {
 		HomeService.loadAll().then(function resolve(response) {
-			console.log(response.data);
+			// console.log(response.data);
 			vm.students = response.data.students;
-			console.log(vm.students);
+			// console.log(vm.students);
 		});
 	}
 
@@ -106,8 +106,8 @@ function HomeController(HomeService, $stateParams, $state) {
 		vm.newStudent = {};
 	}
 
-	function deleteStudent(student) {
-		HomeService.deleteStudent(student);
+	function removeStudent() {
+		HomeService.removeStudent(vm.student);
 		console.log("in the delete controller action");
 	}
 }
@@ -143,10 +143,18 @@ function uiRouterSetup($stateProvider, $urlRouterProvider) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-throw new Error("Module build failed: Error: ENOENT: no such file or directory, open '/Users/danmilo/wdi-queue-helper/client/components/auth/auth.component.js'");
+
+
+var template = __webpack_require__(8);
+
+var AuthComponent = {
+  template: template
+};
+
+angular.module('wdi-queue-helper').component('auth', AuthComponent);
 
 /***/ }),
 /* 3 */
@@ -191,8 +199,8 @@ function HomeService($http) {
         return $http.post('/api/students', student);
     }
 
-    function removeStudent(student) {
-        return $http.delete('/api/students', student);
+    function removeStudent(studentId) {
+        return $http.delete('/api/students/${studentId}');
     }
 }
 
@@ -38271,11 +38279,16 @@ module.exports = angular;
 
 
 /***/ }),
-/* 8 */,
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = "\n<main id=\"authMain\">\n<div class=\"wrapper\">\n  <form action='/api/sessions/login' ng-submit =\"$ctrl.current.user\" class=\"form-signin\" method = 'POST'>\n    <h2 class=\"form-signin-heading\">Please login</h2>\n        <input type=\"text\" class=\"form-control\" name=\"username\" placeholder=\"Email Address\" required=\"\" autofocus=\"\" />\n        <input type=\"password\" class=\"form-control\" name=\"password\" placeholder=\"Password\" required=\"\"/>\n        <button class=\"btn btn-lg btn-warning btn-block\" type=\"submit\">Login</button>\n    </form>\n</div>\n</main>\n\n";
+
+/***/ }),
 /* 9 */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n          <button ng-click=\"$ctrl.deleteStudent($ctrl.student)\" class=\"btn btn-danger\">Delete Account</button>\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>";
+module.exports = "\n<div>\n   <ol>\n      <li ng-repeat='student in $ctrl.students'>\n          {{student.first_name}}\n          {{student.last_name}}\n          <button ng-click=\"$ctrl.removeStudent()\" class=\"btn btn-danger\">Delete Account</button>\n      </li>\n  </ol>\n</div>\n\n<main class= \"newStudentForm\">\n    <h1>Create</h1>\n    <link href=\"https://fonts.googleapis.com/css?family=Alice\" rel=\"stylesheet\">\n    <br>\n    <div class=\"newStudent\">\n        <form ng-submit = \"$ctrl.addStudent(newStudent)\">\n            <div>\n                <label>Name</label>\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.first_name\" >\n                <br>\n                <input type = \"text\" name= \"name\" ng-model= \"$ctrl.newStudent.last_name\" >\n\n                <input type=\"submit\" name=\"create account\">\n            </div>\n        </form>\n    </div>\n</main>\n";
 
 /***/ }),
 /* 10 */

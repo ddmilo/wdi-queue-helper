@@ -19,7 +19,7 @@ function HomeService($http){
         return $http.post('/api/students', student);
     }
 
-    function removeStudent(student){
-      return $http.delete('/api/students', student);
+    function removeStudent(studentId){
+      return $http.delete('/api/students/${studentId}');
     }
 }

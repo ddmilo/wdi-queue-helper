@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const router = express.Router();
 const Student = require('../models/student.model.js');
 
@@ -25,9 +26,9 @@ router.post('/', function createAction(req, res){
 
 //Student Delete
 
-router.delete("/delete/:studentId", function(req, res) {
+router.delete("/", function(req, res) {
   console.log('delete route');
-  Student.findByIdAndRemove(req.params.studentId)
+  Student.findByIdAndRemove(vm.students._id)
     .exec(function (err, student) {
       console.log(student);
       res.json({student: student});

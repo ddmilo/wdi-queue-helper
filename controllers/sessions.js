@@ -1,8 +1,8 @@
 //REQUIREMENTS
-var express = require('express');
-var router = express.Router();
-var Admin = require('../models/admin.model.js');
-var authHelpers = require('../helpers/auth.js');
+const express = require('express');
+const router = express.Router();
+const Admin = require('../models/admin.model.js');
+const authHelpers = require('../helpers/auth.js');
 
 //FOR LOGIN USER
 router.get('/login', function(req, res) {

@@ -6,7 +6,7 @@ function HomeController(HomeService, $stateParams, $state) {
 	vm.students = [];
 	vm.newStudent = {};
 	vm.addStudent = addStudent;
-	vm.deleteStudent = deleteStudent;
+	vm.removeStudent = removeStudent;
 
 	activate();
 
@@ -19,9 +19,9 @@ function HomeController(HomeService, $stateParams, $state) {
 		HomeService
 			.loadAll()
 			.then(function resolve(response){
-				console.log(response.data);
+				// console.log(response.data);
 				vm.students = response.data.students;
-				console.log(vm.students);
+				// console.log(vm.students);
 			});
 	}
 
@@ -35,9 +35,9 @@ function HomeController(HomeService, $stateParams, $state) {
 		vm.newStudent = {};
 	}
 
-	function deleteStudent(student){
+	function removeStudent(){
 		HomeService
-			.deleteStudent(student);
+			.removeStudent(vm.student);
 			console.log("in the delete controller action");
 	}
 }
